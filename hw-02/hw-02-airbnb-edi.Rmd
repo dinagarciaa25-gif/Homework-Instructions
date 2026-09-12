@@ -234,7 +234,7 @@ Using both the visualization and summary statistics, describe the distribution o
 - Which has the most variation (spread) in prices?
 - Are there any notable patterns or outliers?
 
-**Your answer:** The neighboorhood that has the highest typical prices is New Town has the highest typical prices because it has the highest median price of 100. Old Town has the most overall variation because it has the highest standard deviation, while New Town has the largest IQR. All five neighborhoods have mean prices higher than their medians, and the ridge plots show long right tails, which suggests that there are some unusually expensive listings
+**Your answer:** The neighborhood that has the highest typical prices is New Town has the highest typical prices because it has the highest median price of 100. Old Town has the most overall variation because it has the highest standard deviation, while New Town has the largest IQR. All five neighborhoods have mean prices higher than their medians, and the ridge plots show long right tails, which suggests that there are some unusually expensive listings
 
 *After completing Exercise 4:*
 
@@ -250,8 +250,17 @@ Using both the visualization and summary statistics, describe the distribution o
 - Ridge plots: `geom_density_ridges()` (requires `library(ggridges)`)
 
 
-```{r review-scores-viz, eval = FALSE, fig.alt = "Visualization comparing the distribution of Airbnb review scores across neighborhoods."}
-# Your code here
+```{r review-scores-viz, eval = TRUE, fig.alt = "Visualization comparing the distribution of Airbnb review scores across neighborhoods."}
+edibnb %>%
+  filter(!is.na(neighbourhood)) %>%
+  ggplot(aes(x = neighbourhood, y = review_scores_rating)) +
+  geom_boxplot() +
+  coord_flip() +
+  labs(
+    title = "Airbnb Review Scores by Neighborhood",
+    x = "Neighborhood",
+    y = "Review Score"
+  )
 ```
 
 *Interpretation (2-3 sentences):*
@@ -260,7 +269,7 @@ Using both the visualization and summary statistics, describe the distribution o
 - How do the neighborhoods compare to each other?
 - Are there any neighborhoods that stand out as having particularly high or low ratings?
 
-**Your answer:** [Type your answer here. Use as much space as you need.]
+**Your answer:** Airbnb guests generally rate the properties highly because most neighborhood ratings are between 90 and 100. The neighborhoods have similar typical ratings. Although Southside and Newington appear to have a little more variation. Several neighborhoods also have unusually low ratings that appear as outliers.
 
 *After completing Exercise 5:*
 
