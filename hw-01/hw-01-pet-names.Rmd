@@ -348,17 +348,19 @@ ggplot(comb_name_props, aes(x = cat_prop, y = dog_prop)) +
   theme_minimal() +
   labs(x = "Proportion of cats", y = "Proportion of dogs") +
   xlim(0.002, 0.01) +
-  ylim(0.002, 0.01) +
-  ggimage::geom_emoji(
-      image = "1f436", aes(x = 0.003, y = 0.009), size = 0.1
-      ) +
-  ggimage::geom_emoji(
-      image = "1f431", aes(x = 0.009, y = 0.003), size = 0.1
-      )
+  ylim(0.002, 0.01) 
+  # ggimage::geom_emoji(
+  #    image = "1f436", aes(x = 0.003, y = 0.009), size = 0.1
+  #    ) +
+  # ggimage::geom_emoji(
+  #    image = "1f431", aes(x = 0.009, y = 0.003), size = 0.1
+  #    )
 ```
 
-a.  What names are more common for cats than dogs? The ones above the line or the ones below the line?
+a.  What names are more common for cats than dogs? The ones above the line or the ones below the line? 
+Names below the diagonal line are more common for cats than for dogs.
 b.  Is the relationship between the two variables (proportion of cats with a given name and proportion of dogs with a given name) positive or negative? What does this mean in context of the data?
+The relationship is positive. In general, as the proportion of cats with a given name increases, the proportion of dogs with that name also tends to increase.
 
 *After completing this exercise:*
 
