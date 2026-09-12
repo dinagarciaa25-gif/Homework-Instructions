@@ -142,7 +142,7 @@ Try binwidths of 25, 50, and 100. Which gives you the most useful view of the da
 ```{r price-hist-experiments, fig.alt = "Faceted histograms of Airbnb price by neighborhood, tested at binwidths of 25, 50, and 100."}
 # Try binwidth = 25
 ggplot(data = edibnb, mapping = aes(x = price)) +
-  geom_histogram(binwidth = 25) +
+  geom_histogram(binwidth = 50) +
   facet_wrap(~neighbourhood)
 
 # Try binwidth = 50
@@ -151,7 +151,7 @@ ggplot(data = edibnb, mapping = aes(x = price)) +
 # Try binwidth = 100
 ```
 
-**Your answer:** [Which binwidth did you choose and why?]
+**Your answer:** I chose a binwidth of 50 because it shows enough detail to compare the price distributions without creating too many narrow bars.
 
 **b) Experiment with facet layout**
 
@@ -161,7 +161,7 @@ Try these three options:
 - `facet_wrap(~neighbourhood, ncol = 1)` - stacks vertically  
 - `facet_wrap(~neighbourhood, nrow = 1)` - arranges horizontally
 
-**Your answer:** [Which layout did you choose and why?]
+**Your answer:** facet_wrap(~neighbourhood) I chose the regular grid because it makes the neighborhoods easier to compare without creating one very long row or column.
 
 **c) Create your final visualization**
 
@@ -170,8 +170,10 @@ Try these three options:
 ```
 
 Use your chosen binwidth and layout:
-```{r final-price-histogram, eval = FALSE, fig.alt = "Faceted histogram of Airbnb price by neighborhood, using the binwidth and layout chosen above."}
-# Your final code here
+```{r final-price-histogram, eval = TRUE, fig.alt = "Faceted histogram of Airbnb price by neighborhood, using the binwidth and layout chosen above."}
+ggplot(data = edibnb, mapping = aes(x = price)) +
+  geom_histogram(binwidth = 50) +
+  facet_wrap(~neighbourhood)
 ```
 
 *After completing Exercise 3:*
@@ -232,7 +234,7 @@ Using both the visualization and summary statistics, describe the distribution o
 - Which has the most variation (spread) in prices?
 - Are there any notable patterns or outliers?
 
-**Your answer:** [Type your answer here. Use as much space as you need.]
+**Your answer:** The neighboorhood that has the highest typical prices is 
 
 *After completing Exercise 4:*
 
