@@ -98,12 +98,12 @@ Your plot should include:
 
 **Hint:** Use `mutate()` with `if_else()`. The condition should check if `day_of_week` is in the vector `c("Saturday", "Sunday")`
 
-```{r create-day-type, eval = FALSE}
+```{r create-day-type, eval = TRUE}
 accidents <- accidents %>%
   mutate(day_of_week_type = if_else(
-    ___ %in% c(___, ___), 
-    "___", 
-    "___"
+    day_of_week %in% c("Saturday", "Sunday"),
+    "Weekend",
+    "Weekday"
   ))
 ```
 
@@ -116,17 +116,17 @@ accidents <- accidents %>%
 - Use `facet_wrap()` to create separate plots for weekday vs. weekend
 - Add `theme_minimal()` and appropriate labels
 
-```{r accident-density-plot, eval = FALSE, fig.alt = "Density plot of accident times by severity, faceted by weekday versus weekend"}
-ggplot(data = ___, aes(x = ___, fill = ___)) +
-  geom_density(alpha = ___) +
-  facet_wrap(~___, ncol = ___) +
-  ___ +
+```{r accident-density-plot, eval = TRUE, fig.alt = "Density plot of accident times by severity, faceted by weekday versus weekend"}
+ggplot(data = accidents, aes(x = time, fill = severity)) +
+  geom_density(alpha = 0.5) +
+  facet_wrap(~ day_of_week_type, ncol = 1) +
+  theme_minimal() +
   labs(
-    title = "___",
-    subtitle = "___",
-    x = "___",
-    y = "___",
-    fill = "___"
+    title = "Distribution of Accident Times by Severity",
+    subtitle = "Comparison of Weekdays and Weekends",
+    x = "Time of Day",
+    y = "Density",
+    fill = "Severity"
   )
 ```
 
@@ -135,6 +135,8 @@ ggplot(data = ___, aes(x = ___, fill = ___)) +
 - When do accidents tend to occur during weekdays vs. weekends?
 - How does the severity of accidents vary by time of day?
 - Are there any notable differences between weekdays and weekends?
+
+On weekdays, accidents tend to occur most often during the late afternoon, especially around the evening. Slight accidents have the strongest weekday peak, while fatal accidents are spread throughout the day. Weekend accidents show a wider afternoon and evening pattern with less separation.
 
 
 *After completing Exercise 3:*
