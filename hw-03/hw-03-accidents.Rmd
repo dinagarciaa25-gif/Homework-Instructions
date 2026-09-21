@@ -160,18 +160,29 @@ On weekdays, accidents tend to occur most often during the late afternoon, espec
 - Do certain vehicle types have more accidents in specific conditions?
 
 **Your visualization:**
-```{r custom-visualization, eval = FALSE}
-# Your code here
-# Accessibility tip: add a fig.alt = "..." option to this chunk header
-# describing what your plot shows, for screen reader users.
+```{r custom-visualization, eval = TRUE, fig.alt = "Bar chart comparing accident severity across weather and light conditions"}
+ggplot(accidents, aes(x = weather, fill = severity)) +
+  geom_bar(position = "dodge") +
+  facet_wrap(~ light, ncol = 2) +
+  coord_flip() +
+  theme_minimal() +
+  labs(
+    title = "Accident Severity by Weather and Light Conditions",
+    x = "Weather Condition",
+    y = "Number of Accidents",
+    fill = "Severity"
+  )
 ```
 
 **What question does your visualization answer?**
-
+How does accident severity vary across different weather and light conditions?
 
 **What variables were used:** 
+The variables used were weather, light, and severity.
 
 **Interpretation (3-4 sentences):** What patterns or insights does your visualization reveal?
+
+Most recorded accidents occurred during daylight and in fine weather without high winds. Accidents were also common in darkness when streetlights were lit, but there were fewer than during daylight. Slight accidents were much more frequent than serious or fatal accidents across nearly all conditions. Accidents in rain, snow, fog, and high winds occurred less frequently in this dataset.
 
 *After completing Exercise 4:*
 
